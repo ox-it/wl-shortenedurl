@@ -11,7 +11,7 @@
 	<name>Sakai Shortened URL Service</name>
 	<groupId>org.sakaiproject.shortenedurl</groupId>
 	<artifactId>shortenedurl</artifactId>
-	<version>1.0.4</version>
+	<version>1.0.4ox1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
 	<organization>
