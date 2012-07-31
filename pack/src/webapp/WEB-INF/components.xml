@@ -94,6 +94,10 @@
 		<property name="timeToIdle" value="3600" />
     </bean>
   	
-	
+    <bean id="org.sakaiproject.shortenedurl.impl.ShortenedUrlInterceptor" parent="org.sakaiproject.content.api.AbstractContentCopyUrlInterceptor"
+          class="org.sakaiproject.shortenedurl.impl.ShortenedUrlInterceptor">
+        <property name="shortenedUrlService" ref="org.sakaiproject.shortenedurl.api.ShortenedUrlService" />
+        <property name="scs" ref="org.sakaiproject.component.api.ServerConfigurationService" />
+    </bean>
 
 </beans>

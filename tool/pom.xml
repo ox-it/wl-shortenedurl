@@ -36,6 +36,7 @@
 	    <dependency>
             <groupId>org.sakaiproject.kernel</groupId>
             <artifactId>sakai-component-manager</artifactId>
+            <scope>provided</scope>
         </dependency>
 	  
   	</dependencies>
