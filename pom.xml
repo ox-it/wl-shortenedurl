@@ -54,19 +54,21 @@
    		<encoding>UTF-8</encoding>
 		<sakai-kernel.version>1.2.5ox1-SNAPSHOT</sakai-kernel.version>
 	</properties>
-    
+
     <scm>
-        <connection>scm:svn:https://source.sakaiproject.org/svn/shortenedurl/tags/shortenedurl-1.0.4</connection>
-        <developerConnection>scm:svn:https://source.sakaiproject.org/svn/shortenedurl/tags/shortenedurl-1.0.4</developerConnection>
-        <url>https://source.sakaiproject.org/svn/shortenedurl/tags/shortenedurl-1.0.4</url>
+        <connection>scm:git:git://git-repo.oucs.ox.ac.uk/git/repos/local-version/shortenedurl.git</connection>
+        <developerConnection>scm:git:ssh://git-repo.oucs.ox.ac.uk/~git/repos/local-version/shortenedurl.git</developerConnection>
     </scm>
     
     <distributionManagement>
-        <site>
-            <id>sakai-site</id>
-            <name>Sakai release Site</name>
-            <url>scpexe://source.sakaiproject.org/var/www/html/release/shortenedurl/${project.version}</url>
-        </site>
+        <repository>
+            <id>maven-repo.oucs</id>
+            <url>https://maven-repo.oucs.ox.ac.uk/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-repo.oucs</id>
+            <url>https://maven-repo.oucs.ox.ac.uk/content/repositories/snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
     
     <pluginRepositories>
