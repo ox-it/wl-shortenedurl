@@ -1,7 +1,8 @@
 package org.sakaiproject.shortenedurl.impl;
 
 import org.sakaiproject.component.api.ServerConfigurationService;
-import org.sakaiproject.content.api.AbstractContentCopyUrlInterceptor;
+import org.sakaiproject.content.api.ContentCopyInterceptorRegistry;
+import org.sakaiproject.content.api.ContentCopyUrlInterceptor;
 import org.sakaiproject.shortenedurl.api.ShortenedUrlService;
 
 import java.net.URI;
@@ -15,10 +16,16 @@ import java.util.regex.Pattern;
  *
  * @author Colin Hebert
  */
-public class ShortenedUrlInterceptor extends AbstractContentCopyUrlInterceptor {
+public class ShortenedUrlInterceptor implements ContentCopyUrlInterceptor{
     private static Pattern PATH_PATTERN = Pattern.compile("/+x/+(.+)");
     private ShortenedUrlService shortenedUrlService;
     private ServerConfigurationService scs;
+    private Collection<String> serverNames;
+    private ContentCopyInterceptorRegistry registry;
+
+    public void init() {
+        registry.registerUrlInterceptor(this);
+    }
 
     public boolean isUrlHandled(String url) {
         URI uri = URI.create(url);
@@ -53,8 +60,15 @@ public class ShortenedUrlInterceptor extends AbstractContentCopyUrlInterceptor {
     }
 
     private Collection<String> getServerNames() {
-        Collection<String> serverNames = new ArrayList<String>(scs.getServerNameAliases());
+        if (serverNames != null)
+            return serverNames;
+
+        serverNames = new ArrayList<String>(scs.getServerNameAliases());
         serverNames.add(scs.getServerName());
         return serverNames;
+    }
+
+    public void setRegistry(ContentCopyInterceptorRegistry registry) {
+        this.registry = registry;
     }
 }
