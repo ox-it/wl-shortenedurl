@@ -37,7 +37,7 @@ public class ShortenedInterceptor implements ContentCopyUrlInterceptor, ContentC
             if (iterator.hasNext())
                 servers.append('|');
         }
-        shortenedUrlPattern = Pattern.compile("(https?://)?(?:\"" + servers + "\")(?::\\d+)?/+x/+\\w+", Pattern.CASE_INSENSITIVE);
+        shortenedUrlPattern = Pattern.compile("(https?://)?(?:" + servers + ")(?::\\d+)?/+x/+\\w+", Pattern.CASE_INSENSITIVE);
     }
 
     public boolean isUrlHandled(String url) {
