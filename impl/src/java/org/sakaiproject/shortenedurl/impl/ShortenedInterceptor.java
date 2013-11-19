@@ -41,7 +41,8 @@ public class ShortenedInterceptor implements ContentCopyUrlInterceptor, ContentC
     }
 
     public boolean isUrlHandled(String url) {
-        URI uri = URI.create(url);
+        // generally the stored URLs are not encoded correctly, manually encode spaces as a quick fix
+        URI uri = URI.create(url.replace(" ", "%20"));
         return (isLocalUri(uri) && PATH_PATTERN.matcher(uri.getPath()).matches());
     }
 
