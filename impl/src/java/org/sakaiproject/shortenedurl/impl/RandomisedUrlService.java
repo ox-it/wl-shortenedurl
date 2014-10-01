@@ -21,9 +21,10 @@
 
 package org.sakaiproject.shortenedurl.impl;
 
+import java.net.URI;
+import java.net.URL;
 import java.sql.SQLException;
 
-import org.apache.commons.httpclient.util.URIUtil;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -403,8 +404,10 @@ public class RandomisedUrlService extends HibernateDaoSupport implements Shorten
   		String encodedUrl = null;
   		
   		try {
-			encodedUrl = URIUtil.encodeQuery(rawUrl);
-		} catch (Exception e) {
+	  		URL url = new URL(rawUrl);
+	  		URI uri = new URI(url.getProtocol(), url.getUserInfo(), url.getHost(), url.getPort(), url.getPath(), url.getQuery(), url.getRef());
+	  		encodedUrl = uri.toASCIIString();
+  		} catch (Exception e) {
 	  		log.debug("Error encoding url: " + rawUrl +". " + e.getClass() + ": " + e.getMessage());
 		}
   		
