@@ -219,7 +219,7 @@ public class RandomisedUrlService extends HibernateDaoSupport implements Shorten
 		
 		log.debug("Encoded URL: " + encodedUrl);
 		
-		addToCache(key, encodedUrl);
+		addToCache(key, url);
 		
 		return encodedUrl;
 	}
